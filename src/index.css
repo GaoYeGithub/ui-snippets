@@ -1,0 +1,63 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+
+@layer base {
+  :root {
+    --color-bg-primary: #121212;
+    --color-bg-secondary: #212121;
+    --color-border: #535353;
+    --color-text-primary: #b3b3b3;
+    --color-accent: #1db954;
+    
+    --tw-bg-opacity: 1;
+    --tw-text-opacity: 1;
+    --tw-border-opacity: 1;
+  }
+}
+
+@layer utilities {
+  .bg-spotify-primary {
+    background-color: rgba(var(--color-bg-primary), var(--tw-bg-opacity));
+  }
+  .bg-spotify-secondary {
+    background-color: rgba(var(--color-bg-secondary), var(--tw-bg-opacity));
+  }
+  .text-spotify-primary {
+    color: rgba(var(--color-text-primary), var(--tw-text-opacity));
+  }
+  .text-spotify-accent {
+    color: rgba(var(--color-accent), var(--tw-text-opacity));
+  }
+  .border-spotify {
+    border-color: rgba(var(--color-border), var(--tw-border-opacity));
+  }
+  .hover\:border-spotify-accent:hover {
+    border-color: rgba(var(--color-accent), var(--tw-border-opacity));
+  }
+  .spotify-transition {
+    transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+}
+
+@layer base {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(var(--color-border), 0.5) transparent;
+  }
+  
+  *::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background-color: rgba(var(--color-border), 0.5);
+    border-radius: 20px;
+  }
+}
+

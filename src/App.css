@@ -1,0 +1,62 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+:root {
+  --color-bg-primary: 18, 18, 18;
+  --color-bg-secondary: 33, 33, 33;
+  --color-border: 83, 83, 83;
+  --color-text-primary: 179, 179, 179;
+  --color-accent: 29, 185, 84;
+}
+
+body {
+  background-color: rgb(var(--color-bg-primary));
+  color: rgb(var(--color-text-primary));
+}
+
+.bg-spotify-primary {
+  background-color: rgb(var(--color-bg-primary));
+}
+
+.bg-spotify-secondary {
+  background-color: rgb(var(--color-bg-secondary));
+}
+
+.text-spotify-primary {
+  color: rgb(var(--color-text-primary));
+}
+
+.text-spotify-accent {
+  color: rgb(var(--color-accent));
+}
+
+.border-spotify {
+  border-color: rgb(var(--color-border));
+}
+
+.hover\:border-spotify-accent:hover {
+  border-color: rgb(var(--color-accent));
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(var(--color-border), 0.5) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(var(--color-border), 0.5);
+  border-radius: 20px;
+}
+
+.spotify-transition {
+  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
