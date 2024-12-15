@@ -19,36 +19,56 @@ const IDE = () => {
   const [css, setCss] = useState(snippet.css.trim());
 
   return (
-    <div className="min-h-screen bg-[#121212] text-[#b3b3b3] p-6 flex flex-col">
-      <button
-        onClick={() => navigate('/')}
-        className="text-[#1db954] mb-4 px-4 py-2 border border-[#1db954] rounded hover:bg-[#1db954] hover:text-white"
+<div className="min-h-screen bg-spotify-primary text-spotify-primary p-6 flex flex-col">
+  <div className="container mx-auto space-y-6">
+    <button
+      onClick={() => navigate('/')}
+      className="group flex items-center text-spotify-accent border border-spotify-accent rounded-full px-4 py-2 hover:bg-spotify-accent hover:text-spotify-primary spotify-transition"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-5 w-5 mr-2 group-hover:rotate-180 spotify-transition"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
       >
-        Back to Snippets
-      </button>
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M10 19l-7-7m0 0l7-7m-7 7h18"
+        />
+      </svg>
+      Back to Snippets
+    </button>
 
-      <div className="grid grid-cols-2 gap-4 flex-grow">
-        <div className="bg-[#212121] p-4 rounded-lg border border-[#535353]">
-          <h2 className="text-xl font-bold text-center mb-4 text-[#1db954]">Editor</h2>
-          <textarea
-            value={html}
-            onChange={(e) => setHtml(e.target.value)}
-            className="w-full h-1/2 p-2 mb-4 bg-[#121212] text-[#b3b3b3] rounded resize-none border border-[#535353]"
-            placeholder="Write HTML here..."
-          ></textarea>
-          <textarea
-            value={css}
-            onChange={(e) => setCss(e.target.value)}
-            className="w-full h-1/2 p-2 bg-[#121212] text-[#b3b3b3] rounded resize-none border border-[#535353]"
-            placeholder="Write CSS here..."
-          ></textarea>
-        </div>
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="bg-spotify-secondary rounded-xl shadow-lg border border-spotify p-6 space-y-4">
+        <h2 className="text-xl font-bold text-center text-spotify-accent border-b border-spotify pb-3">
+          Code Editor
+        </h2>
+        <textarea
+          value={html}
+          onChange={(e) => setHtml(e.target.value)}
+          className="w-full min-h-[150px] h-[calc(50%-1rem)] p-4 bg-spotify-primary text-spotify-primary rounded-lg border border-spotify focus:ring-2 focus:ring-spotify-accent spotify-transition resize-y"
+          placeholder="Write HTML here..."
+        />
+        <textarea
+          value={css}
+          onChange={(e) => setCss(e.target.value)}
+          className="w-full min-h-[150px] h-[calc(50%-1rem)] p-4 bg-spotify-primary text-spotify-primary rounded-lg border border-spotify focus:ring-2 focus:ring-spotify-accent spotify-transition resize-y"
+          placeholder="Write CSS here..."
+        />
+      </div>
 
-        <div className="bg-[#212121] p-4 rounded-lg border border-[#535353]">
-          <h2 className="text-xl font-bold text-center mb-4 text-[#1db954]">Preview</h2>
+      <div className="bg-spotify-secondary rounded-xl shadow-lg border border-spotify p-6">
+        <h2 className="text-xl font-bold text-center text-spotify-accent border-b border-spotify pb-3">
+          Live Preview
+        </h2>
+        <div className="w-full h-[400px] bg-white rounded-lg overflow-hidden shadow-inner">
           <iframe
             title="live-preview"
-            className="w-full h-full bg-white rounded"
+            className="w-full h-full"
             srcDoc={`
               <html>
                 <head>
@@ -61,6 +81,9 @@ const IDE = () => {
         </div>
       </div>
     </div>
+  </div>
+</div>
+
   );
 };
 
