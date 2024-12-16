@@ -211,80 +211,90 @@ export const cssSnippets = [
     preview: (
       <div className="tilt-box"></div>
     ),
-    id: 'rotating-globe',
-    name: 'Rotating Globe',
-    css: `
-.globe {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 50% 50%, #1e3c72, #2a5298);
-  position: relative;
-  animation: spin 10s linear infinite;
-}
-
-.globe::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background: radial-gradient(circle at 50% 50%, transparent, rgba(255, 255, 255, 0.5));
-  mix-blend-mode: screen;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}`,
-
-    preview: (
-      <div className="globe"></div>
-    ),
   },
-  {
-    id: 'simple-box',
-    name: 'Simple Box',
-    css: `
-.box {
-  width: 100px;
-  height: 100px;
-  background-color: #3498db;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-family: Arial, sans-serif;
-  font-size: 14px;
-}`,
-    preview: (
-      <div className="box">Box</div>
-    ),
-  },
-  {
-    id: 'hover-button',
-    name: 'Hover Button',
-    css: `
-    .button {
-      padding: 10px 20px;
-      background-color: #2ecc71;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-family: Arial, sans-serif;
-      transition: background-color 0.3s;
-    }
-
-    .button:hover {
-      background-color: #27ae60;
-    }`,
+    {
+      id: 'gradient-hover-button',
+      name: 'Gradient Hover Button',
+      css: `
+  .gradient-hover-button {
+    position: relative;
+    padding: 1px;
+    border-radius: 8px;
+  }
+  .gradient-hover-button:hover div {
+    transition-duration: 0.25s;
+    opacity: 1;
+  }
+  .gradient-hover-button div {
+    filter: blur(1px);
+    border-radius: 8px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 1.5s ease;
+    background: linear-gradient(91.83deg, rgb(208, 60, 74) 2.26%, rgb(172, 74, 218) 95.81%);
+    animation: pulse 10s ease-in-out infinite;
+    opacity: 0.75;
+  }
+  .gradient-hover-button span {
+    padding: 12px 24px;
+    background-color: white;
+    position: relative;
+    color: black;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 250ms cubic-bezier(0.2, 0.8, 0.4, 1);
+  }
+  
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }`,
       preview: (
-        <button className="button">Hover Me</button>
-    ),
+        <div className="gradient-hover-button">
+          <div></div>
+          <span>Hover Me</span>
+        </div>
+      ),
+    },
+    {
+      id: 'flashing-dots',
+      name: 'Flashing Dots Loader',
+      css: `
+  .flashing-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .flashing-dots span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: white;
+    animation: flashing 1.4s infinite linear;
+    margin: 0 4px;
+    display: inline-block;
+  }
+  .flashing-dots span:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  .flashing-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+  @keyframes flashing {
+    0% { opacity: 0.2; }
+    20% { opacity: 1; }
+    100% { opacity: 0.2; }
+  }`,
+      preview: (
+        <div className="flashing-dots">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      ),
   },
 ];
 
